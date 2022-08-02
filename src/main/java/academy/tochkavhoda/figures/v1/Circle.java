@@ -63,7 +63,7 @@ public class Circle {
     }
 
     public boolean isInside(int x, int y) {
-        return center.getX() - radius <= x && x <= center.getX() + radius && center.getY() - radius <= y && y <= center.getY() + radius;
+        return (center.getX() - x) * (center.getX() - x) + (center.getY() - y) * (center.getY() - y) <= radius * radius;
     }
 
     public boolean isInside(Point point) {
