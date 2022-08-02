@@ -14,11 +14,11 @@ public class Rectangle {
     }
 
     public Rectangle(int length, int width) {
-        this(0, 0, length, width);
+        this(0, -width, length, 0);
     }
 
     public Rectangle() {
-        this(0, 0, 1, 1);
+        this(0, -1, 1, 0);
     }
 
     public Point getTopLeft() {
@@ -46,10 +46,12 @@ public class Rectangle {
     }
 
     public void moveTo(int x, int y) {
+        int length = getLength();
+        int width = getWidth();
         leftTop.setX(x);
         leftTop.setY(y);
-        rightBottom.setX(x + getLength());
-        rightBottom.setY(y + getWidth());
+        rightBottom.setX(x + length);
+        rightBottom.setY(y + width);
     }
 
     public void moveTo(Point point) {
@@ -64,8 +66,6 @@ public class Rectangle {
     public void resize(double ratio) {
         int length = (int) (getLength() * ratio);
         int width = (int) (getWidth() * ratio);
-        leftTop.setX(leftTop.getX() + (getLength() - length) / 2);
-        leftTop.setY(leftTop.getY() + (getWidth() - width) / 2);
         rightBottom.setX(leftTop.getX() + length);
         rightBottom.setY(leftTop.getY() + width);
     }
@@ -96,11 +96,12 @@ public class Rectangle {
     }
 
     public boolean isIntersects(Rectangle rectangle) {
-        return !(rectangle.getTopLeft().getX() > rightBottom.getX() || rectangle.getTopLeft().getY() > rightBottom.getY() || rectangle.getBottomRight().getX() < leftTop.getX() || rectangle.getBottomRight().getY() < leftTop.getY());
+        return !(rectangle.getTopLeft().getX() > rightBottom.getX() || rectangle.getTopLeft().getY() > rightBottom.getY() ||
+                rectangle.getBottomRight().getX() < leftTop.getX() || rectangle.getBottomRight().getY() < leftTop.getY());
     }
 
     public boolean isInside(Rectangle rectangle) {
-        return rectangle.getTopLeft().getX() <= leftTop.getX() && rectangle.getTopLeft().getY() <= leftTop.getY() && rectangle.getBottomRight().getX() >= rightBottom.getX() && rectangle.getBottomRight().getY() >= rightBottom.getY();
+        return this.isInside(rectangle.getTopLeft()) && this.isInside(rectangle.getBottomRight());
     }
 
     @Override
