@@ -14,11 +14,11 @@ public class Square {
     }
 
     public Square(int size) {
-        this(0, 0, size);
+        this(0, -size, size);
     }
 
     public Square() {
-        this(0, 0, 1);
+        this(0, -1, 1);
     }
 
     public Point getTopLeft() {
