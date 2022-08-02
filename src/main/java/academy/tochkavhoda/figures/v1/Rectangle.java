@@ -73,8 +73,6 @@ public class Rectangle {
     public void stretch(double xRatio, double yRatio) {
         int length = (int) (getLength() * xRatio);
         int width = (int) (getWidth() * yRatio);
-        leftTop.setX(leftTop.getX() + (getLength() - length) / 2);
-        leftTop.setY(leftTop.getY() + (getWidth() - width) / 2);
         rightBottom.setX(leftTop.getX() + length);
         rightBottom.setY(leftTop.getY() + width);
     }
