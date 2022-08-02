@@ -71,15 +71,15 @@ public class Ellipse {
     }
 
     public double getArea() {
-        return Math.PI * xAxis * yAxis;
+        return Math.PI * xAxis * yAxis / 4;
     }
 
     public double getPerimeter() {
-        return Math.PI * (3 * (xAxis + yAxis) - Math.sqrt((3 * xAxis + yAxis) * (xAxis + 3 * yAxis)));
+        return 2 * Math.PI * Math.sqrt((Math.pow(xAxis, 2) + Math.pow(yAxis, 2))/ 8);
     }
 
     public boolean isInside(int x, int y) {
-        return center.getX() - xAxis <= x && x <= center.getX() + xAxis && center.getY() - yAxis <= y && y <= center.getY() + yAxis;
+        return Math.pow(x - center.getX(), 2) / Math.pow(xAxis / 2, 2) + Math.pow(y - center.getY(), 2) / Math.pow(yAxis / 2, 2) <= 1;
     }
 
     public boolean isInside(Point point) {
