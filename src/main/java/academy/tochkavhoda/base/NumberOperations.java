@@ -23,7 +23,7 @@ public class NumberOperations {
     }
 
     public static Double calculateDensity(double weight, double volume, double min, double max) {
-        return (weight * volume) / (max - min);
+        return (weight / volume ) > min && (weight / volume) < max ? (weight / volume) : null;
     }
 
     public static Integer find(BigInteger[] array, BigInteger value)    {
@@ -36,7 +36,7 @@ public class NumberOperations {
     }
 
     public static BigDecimal calculateDensity(BigDecimal weight, BigDecimal volume, BigDecimal min, BigDecimal max) {
-        return (weight.multiply(volume)).divide(max.subtract(min));
+        return (weight.divide(volume)).compareTo(min) > 0 && (weight.divide(volume)).compareTo(max) < 0 ? (weight.divide(volume)) : null;
     }
 
 }
