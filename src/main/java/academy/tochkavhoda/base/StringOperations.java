@@ -18,19 +18,19 @@ public class StringOperations {
     }
 
     public static boolean isSameFirstCharPosition(String string1, String string2, char character) {
-        return string1.charAt(0) == character && string2.charAt(0) == character;
+        return string1.indexOf(character) == string2.indexOf(character);
     }
 
     public static boolean isSameLastCharPosition(String string1, String string2, char character) {
-        return string1.charAt(string1.length() - 1) == character && string2.charAt(string2.length() - 1) == character;
+        return string1.lastIndexOf(character) == string2.lastIndexOf(character);
     }
 
     public static boolean isSameFirstStringPosition(String string1, String string2, String str) {
-        return string1.substring(0, str.length()) == str && string2.substring(0, str.length()) == str;
+        return string1.indexOf(str) == string2.indexOf(str);
     }
 
     public static boolean isSameLastStringPosition(String string1, String string2, String str) {
-        return string1.substring(string1.length() - str.length()) == str && string2.substring(string2.length() - str.length()) == str;
+        return string1.lastIndexOf(str) == string2.lastIndexOf(str);
     }
 
     public static boolean isEqual(String string1, String string2) {
@@ -75,7 +75,7 @@ public class StringOperations {
         return new StringBuilder(string).reverse().toString();
     }
 
-    public static boolean isPalindrome(String string)   {
+    public static boolean isPalindrome(String string) {
         return string.equals(reverse(string));
     }
 
@@ -94,7 +94,13 @@ public class StringOperations {
     }
 
     public static boolean hasSameSubstring(String string1, String string2, int index, int length) {
-        return string1.substring(index, index + length).equals(string2.substring(index, index + length));
+        if (string1.length() < index + length || string2.length() < index + length) {
+            return false;
+        }
+
+        String substring = string1.substring(index, index + length);
+        String substring2 = string2.substring(index, index + length);
+        return substring.equals(substring2);
     }
 
     public static boolean isEqualAfterReplaceCharacters(String string1, char replaceInStr1, char replaceByInStr1, String string2, char replaceInStr2, char replaceByInStr2) {
@@ -106,7 +112,7 @@ public class StringOperations {
     }
 
     public static boolean isPalindromeAfterRemovingSpacesIgnoreCase(String string) {
-        return string.replaceAll("\\s", "").equals(reverse(string).replaceAll("\\s", ""));
+        return string.replaceAll("\\s", "").equalsIgnoreCase(reverse(string).replaceAll("\\s", ""));
     }
 
     public static boolean isEqualAfterTrimming(String string1, String string2) {
@@ -127,7 +133,7 @@ public class StringOperations {
     public static String makeCsvStringFromDoubles(double[] array) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < array.length; i++) {
-            stringBuilder.append(array[i]);
+            stringBuilder.append(String.format("%.2f", array[i]));
             if (i != array.length - 1) {
                 stringBuilder.append(",");
             }
@@ -149,7 +155,7 @@ public class StringOperations {
     public static StringBuilder makeCsvStringBuilderFromDoubles(double[] array) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < array.length; i++) {
-            stringBuilder.append(array[i]);
+            stringBuilder.append(String.format("%.2f", array[i]));
             if (i != array.length - 1) {
                 stringBuilder.append(",");
             }
@@ -167,9 +173,15 @@ public class StringOperations {
 
     public static StringBuilder insertCharacters(String string, int[] positions, char[] characters) {
         StringBuilder stringBuilder = new StringBuilder(string);
+        int j = 0;
+
         for (int i = 0; i < positions.length; i++) {
-            stringBuilder.insert(positions[i], characters[i]);
+           if (positions[i] <= i) {
+               stringBuilder.insert(positions[i] + j, characters[i]);
+               j++;
+           }
         }
+
         return stringBuilder;
     }
 }
