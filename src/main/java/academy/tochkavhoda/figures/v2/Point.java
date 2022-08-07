@@ -3,7 +3,6 @@ package academy.tochkavhoda.figures.v2;
 import academy.tochkavhoda.iface.v2.Movable;
 
 public class Point implements Movable {
-
     private int x, y;
 
     public Point(int x, int y) {
@@ -31,11 +30,13 @@ public class Point implements Movable {
         this.y = y;
     }
 
+    @Override
     public void moveTo(int newX, int newY) {
         x = newX;
         y = newY;
     }
 
+    @Override
     public void moveRel(int dx, int dy) {
         x += dx;
         y += dy;

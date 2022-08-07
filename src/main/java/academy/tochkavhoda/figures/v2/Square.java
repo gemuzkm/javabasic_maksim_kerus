@@ -65,10 +65,6 @@ public class Square extends Figure {
         return x >= leftTop.getX() && x <= leftTop.getX() + size && y >= leftTop.getY() && y <= leftTop.getY() + size;
     }
 
-    public boolean isInside(Point point) {
-        return isInside(point.getX(), point.getY());
-    }
-
     public boolean isIntersects(Square square) {
         return !(square.getTopLeft().getX() > getBottomRight().getX() || square.getTopLeft().getY() > getBottomRight().getY() || square.getBottomRight().getX() < getTopLeft().getX() || square.getBottomRight().getY() < getTopLeft().getY());
     }

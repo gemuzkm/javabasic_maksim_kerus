@@ -1,10 +1,6 @@
 package academy.tochkavhoda.figures.v2;
 
-import academy.tochkavhoda.iface.v2.HasArea;
-import academy.tochkavhoda.iface.v2.Movable;
-import academy.tochkavhoda.iface.v2.Resizable;
-
-public class Circle extends Figure implements Movable {
+public class Circle extends Figure {
     private int radius;
     private Point center;
 
@@ -66,14 +62,9 @@ public class Circle extends Figure implements Movable {
         return 2 * Math.PI * radius;
     }
 
-    @Override
+//    @Override
     public boolean isInside(int x, int y) {
         return (center.getX() - x) * (center.getX() - x) + (center.getY() - y) * (center.getY() - y) <= radius * radius;
-    }
-
-    @Override
-    public boolean isInside(Point point) {
-        return isInside(point.getX(), point.getY());
     }
 
     @Override

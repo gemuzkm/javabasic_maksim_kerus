@@ -85,10 +85,6 @@ public class Ellipse extends Figure implements Stretchable {
         return Math.pow(x - center.getX(), 2) / Math.pow(xAxis / 2, 2) + Math.pow(y - center.getY(), 2) / Math.pow(yAxis / 2, 2) <= 1;
     }
 
-    public boolean isInside(Point point) {
-        return isInside(point.getX(), point.getY());
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
