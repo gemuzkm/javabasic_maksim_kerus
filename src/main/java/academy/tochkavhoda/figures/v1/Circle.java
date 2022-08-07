@@ -37,13 +37,13 @@ public class Circle {
         this.radius = radius;
     }
 
+    public void moveTo(Point point) {
+        moveTo(point.getX(), point.getY());
+    }
+
     public void moveTo(int x, int y) {
         center.setX(x);
         center.setY(y);
-    }
-
-    public void moveTo(Point point) {
-        moveTo(point.getX(), point.getY());
     }
 
     public void moveRel(int dx, int dy) {

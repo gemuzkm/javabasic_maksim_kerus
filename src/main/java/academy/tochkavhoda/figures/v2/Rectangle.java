@@ -1,6 +1,11 @@
 package academy.tochkavhoda.figures.v2;
 
-public class Rectangle {
+import academy.tochkavhoda.iface.v2.HasArea;
+import academy.tochkavhoda.iface.v2.Movable;
+import academy.tochkavhoda.iface.v2.Resizable;
+import academy.tochkavhoda.iface.v2.Stretchable;
+
+public class Rectangle extends Figure implements Movable, Resizable, Stretchable, HasArea {
     private Point leftTop;
     private Point rightBottom;
 
@@ -45,6 +50,7 @@ public class Rectangle {
         return rightBottom.getY() - leftTop.getY();
     }
 
+    @Override
     public void moveTo(int x, int y) {
         int length = getLength();
         int width = getWidth();
@@ -54,15 +60,13 @@ public class Rectangle {
         rightBottom.setY(y + width);
     }
 
-    public void moveTo(Point point) {
-        moveTo(point.getX(), point.getY());
-    }
-
+    @Override
     public void moveRel(int dx, int dy) {
         leftTop.moveRel(dx, dy);
         rightBottom.moveRel(dx, dy);
     }
 
+    @Override
     public void resize(double ratio) {
         int length = (int) (getLength() * ratio);
         int width = (int) (getWidth() * ratio);
@@ -70,6 +74,7 @@ public class Rectangle {
         rightBottom.setY(leftTop.getY() + width);
     }
 
+    @Override
     public void stretch(double xRatio, double yRatio) {
         int length = (int) (getLength() * xRatio);
         int width = (int) (getWidth() * yRatio);
@@ -77,6 +82,7 @@ public class Rectangle {
         rightBottom.setY(leftTop.getY() + width);
     }
 
+    @Override
     public double getArea() {
         return getLength() * getWidth();
     }
@@ -85,10 +91,12 @@ public class Rectangle {
         return 2 * (getLength() + getWidth());
     }
 
+    @Override
     public boolean isInside(int x, int y) {
         return x >= leftTop.getX() && x <= rightBottom.getX() && y >= leftTop.getY() && y <= rightBottom.getY();
     }
 
+//    @Override
     public boolean isInside(Point point) {
         return isInside(point.getX(), point.getY());
     }

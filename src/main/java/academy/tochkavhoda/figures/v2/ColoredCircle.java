@@ -1,6 +1,8 @@
 package academy.tochkavhoda.figures.v2;
 
-public class ColoredCircle extends Circle {
+import academy.tochkavhoda.iface.v2.Colored;
+
+public class ColoredCircle extends Circle implements Colored {
     private int color;
 
     public ColoredCircle(Point center, int radius, int color) {
@@ -44,10 +46,12 @@ public class ColoredCircle extends Circle {
         super.setRadius(radius);
     }
 
+    @Override
     public int getColor() {
         return color;
     }
 
+    @Override
     public void setColor(int color) {
         this.color = color;
     }

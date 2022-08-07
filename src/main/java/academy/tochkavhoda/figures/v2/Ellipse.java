@@ -1,6 +1,8 @@
 package academy.tochkavhoda.figures.v2;
 
-public class Ellipse {
+import academy.tochkavhoda.iface.v2.Stretchable;
+
+public class Ellipse extends Figure implements Stretchable {
     private Point center;
     private int xAxis;
     private int yAxis;
@@ -47,29 +49,30 @@ public class Ellipse {
         this.center = center;
     }
 
+    @Override
     public void moveTo(int x, int y) {
         center.setX(x);
         center.setY(y);
     }
 
-    public void moveTo(Point point) {
-        moveTo(point.getX(), point.getY());
-    }
-
+    @Override
     public void moveRel(int dx, int dy) {
         center.moveRel(dx, dy);
     }
 
+    @Override
     public void resize(double ratio) {
         xAxis = (int) (xAxis * ratio);
         yAxis = (int) (yAxis * ratio);
     }
 
+    @Override
     public void stretch(double xRatio, double yRatio) {
         xAxis = (int) (xAxis * xRatio);
         yAxis = (int) (yAxis * yRatio);
     }
 
+    @Override
     public double getArea() {
         return Math.PI * xAxis * yAxis / 4;
     }

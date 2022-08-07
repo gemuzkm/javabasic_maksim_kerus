@@ -1,6 +1,8 @@
 package academy.tochkavhoda.figures.v2;
 
-public class ColoredRectangle extends Rectangle {
+import academy.tochkavhoda.iface.v2.Colored;
+
+public class ColoredRectangle extends Rectangle implements Colored {
     private int color;
     public ColoredRectangle(Point leftTop, Point rightBottom, int color) {
         super(leftTop, rightBottom);
@@ -35,6 +37,7 @@ public class ColoredRectangle extends Rectangle {
         return super.getBottomRight();
     }
 
+    @Override
     public int getColor() {
         return color;
     }
@@ -47,6 +50,7 @@ public class ColoredRectangle extends Rectangle {
         super.setBottomRight(bottomRight);
     }
 
+    @Override
     public void setColor(int color) {
         this.color = color;
     }

@@ -1,6 +1,10 @@
 package academy.tochkavhoda.figures.v2;
 
-public class Circle {
+import academy.tochkavhoda.iface.v2.HasArea;
+import academy.tochkavhoda.iface.v2.Movable;
+import academy.tochkavhoda.iface.v2.Resizable;
+
+public class Circle extends Figure implements Movable {
     private int radius;
     private Point center;
 
@@ -37,23 +41,23 @@ public class Circle {
         this.radius = radius;
     }
 
+    @Override
     public void moveTo(int x, int y) {
         center.setX(x);
         center.setY(y);
     }
 
-    public void moveTo(Point point) {
-        moveTo(point.getX(), point.getY());
-    }
-
+    @Override
     public void moveRel(int dx, int dy) {
         center.moveRel(dx, dy);
     }
 
+    @Override
     public void resize(double ratio) {
         radius = (int) (radius * ratio);
     }
 
+    @Override
     public double getArea() {
         return Math.PI * radius * radius;
     }
@@ -62,10 +66,12 @@ public class Circle {
         return 2 * Math.PI * radius;
     }
 
+    @Override
     public boolean isInside(int x, int y) {
         return (center.getX() - x) * (center.getX() - x) + (center.getY() - y) * (center.getY() - y) <= radius * radius;
     }
 
+    @Override
     public boolean isInside(Point point) {
         return isInside(point.getX(), point.getY());
     }

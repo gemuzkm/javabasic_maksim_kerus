@@ -1,6 +1,6 @@
 package academy.tochkavhoda.figures.v2;
 
-public class Square {
+public class Square extends Figure {
     private int size;
     private Point leftTop;
 
@@ -37,19 +37,18 @@ public class Square {
         return size;
     }
 
+    @Override
     public void moveTo(int x, int y) {
         leftTop.setX(x);
         leftTop.setY(y);
     }
 
-    public void moveTo(Point point) {
-        moveTo(point.getX(), point.getY());
-    }
-
+    @Override
     public void moveRel(int dx, int dy) {
         leftTop.moveRel(dx, dy);
     }
 
+    @Override
     public void resize(double ratio) {
         size = (int) (size * ratio);
     }
