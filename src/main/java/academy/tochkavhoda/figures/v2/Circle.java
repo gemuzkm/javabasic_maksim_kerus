@@ -62,7 +62,7 @@ public class Circle extends Figure {
         return 2 * Math.PI * radius;
     }
 
-//    @Override
+    @Override
     public boolean isInside(int x, int y) {
         return (center.getX() - x) * (center.getX() - x) + (center.getY() - y) * (center.getY() - y) <= radius * radius;
     }
