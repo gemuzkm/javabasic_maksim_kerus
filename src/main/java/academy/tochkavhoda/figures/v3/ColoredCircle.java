@@ -1,33 +1,34 @@
 package academy.tochkavhoda.figures.v3;
 
-import academy.tochkavhoda.iface.v2.Colored;
+import academy.tochkavhoda.colors.v3.Color;
+import academy.tochkavhoda.iface.v3.Colored;
 
 public class ColoredCircle extends Circle implements Colored {
-    private int color;
+    private Color color;
 
-    public ColoredCircle(Point center, int radius, int color) {
+    public ColoredCircle(Point center, int radius, Color color) {
         super(center, radius);
         this.color = color;
     }
 
-    public ColoredCircle(int xCenter, int yCenter, int radius, int color) {
+    public ColoredCircle(int xCenter, int yCenter, int radius, Color color) {
         super(xCenter, yCenter, radius);
         this.color = color;
     }
 
-    public ColoredCircle(int radius, int color) {
+    public ColoredCircle(int radius, Color color) {
         super(radius);
         this.color = color;
     }
 
-    public ColoredCircle(int color) {
+    public ColoredCircle(Color color) {
         super();
         this.color = color;
     }
 
     public ColoredCircle() {
         super();
-        this.color = 1;
+        this.color =Color.RED;
     }
 
     public Point getCenter() {
@@ -44,16 +45,6 @@ public class ColoredCircle extends Circle implements Colored {
 
     public void setRadius(int radius) {
         super.setRadius(radius);
-    }
-
-    @Override
-    public int getColor() {
-        return color;
-    }
-
-    @Override
-    public void setColor(int color) {
-        this.color = color;
     }
 
     public void moveRel(int dx, int dy) {
@@ -94,7 +85,17 @@ public class ColoredCircle extends Circle implements Colored {
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + color;
+        result = 31 * result + color.hashCode();
         return result;
+    }
+
+    @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
+    public Color getColor() {
+        return color;
     }
 }

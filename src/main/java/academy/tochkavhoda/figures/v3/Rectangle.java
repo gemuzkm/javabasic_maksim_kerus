@@ -1,6 +1,6 @@
 package academy.tochkavhoda.figures.v3;
 
-import academy.tochkavhoda.iface.v2.Stretchable;
+import academy.tochkavhoda.iface.v3.Stretchable;
 
 public class Rectangle extends Figure implements Stretchable {
     private Point leftTop;

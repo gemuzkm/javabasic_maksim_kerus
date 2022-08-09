@@ -1,32 +1,33 @@
 package academy.tochkavhoda.figures.v3;
 
-import academy.tochkavhoda.iface.v2.Colored;
+import academy.tochkavhoda.colors.v3.Color;
+import academy.tochkavhoda.iface.v3.Colored;
 
 public class ColoredRectangle extends Rectangle implements Colored {
-    private int color;
-    public ColoredRectangle(Point leftTop, Point rightBottom, int color) {
+    private Color color;
+    public ColoredRectangle(Point leftTop, Point rightBottom, Color color) {
         super(leftTop, rightBottom);
         this.color = color;
     }
 
-    public ColoredRectangle(int xLeft, int yTop, int xRight, int yBottom, int color) {
+    public ColoredRectangle(int xLeft, int yTop, int xRight, int yBottom, Color color) {
         super(xLeft, yTop, xRight, yBottom);
         this.color = color;
     }
 
-    public ColoredRectangle(int length, int width, int color) {
+    public ColoredRectangle(int length, int width, Color color) {
         super(length, width);
         this.color = color;
     }
 
-    public ColoredRectangle(int color) {
+    public ColoredRectangle(Color color) {
         super();
         this.color = color;
     }
 
     public ColoredRectangle() {
         super();
-        this.color = 1;
+        this.color = Color.RED;
     }
 
     public Point getTopLeft() {
@@ -38,7 +39,7 @@ public class ColoredRectangle extends Rectangle implements Colored {
     }
 
     @Override
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 
@@ -51,7 +52,7 @@ public class ColoredRectangle extends Rectangle implements Colored {
     }
 
     @Override
-    public void setColor(int color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -113,7 +114,7 @@ public class ColoredRectangle extends Rectangle implements Colored {
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + color;
+        result = 31 * result + color.hashCode();
         return result;
     }
 }
