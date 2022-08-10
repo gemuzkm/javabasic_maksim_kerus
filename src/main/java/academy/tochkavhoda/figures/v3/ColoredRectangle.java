@@ -1,6 +1,7 @@
 package academy.tochkavhoda.figures.v3;
 
 import academy.tochkavhoda.colors.v3.Color;
+import academy.tochkavhoda.colors.v3.ColorException;
 import academy.tochkavhoda.iface.v3.Colored;
 
 public class ColoredRectangle extends Rectangle implements Colored {
@@ -41,6 +42,11 @@ public class ColoredRectangle extends Rectangle implements Colored {
     @Override
     public Color getColor() {
         return color;
+    }
+
+    @Override
+    public void setColor(String colorString) throws ColorException {
+        this.color = Color.valueOf(colorString);
     }
 
     public void setTopLeft(Point topLeft) {

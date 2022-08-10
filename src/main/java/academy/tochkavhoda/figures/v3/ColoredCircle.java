@@ -1,6 +1,7 @@
 package academy.tochkavhoda.figures.v3;
 
 import academy.tochkavhoda.colors.v3.Color;
+import academy.tochkavhoda.colors.v3.ColorException;
 import academy.tochkavhoda.iface.v3.Colored;
 
 public class ColoredCircle extends Circle implements Colored {
@@ -11,9 +12,27 @@ public class ColoredCircle extends Circle implements Colored {
         this.color = color;
     }
 
+    public ColoredCircle(Point center, int radius, String color) {
+        super(center, radius);
+        try {
+            setColor(color);
+        } catch (ColorException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public ColoredCircle(int xCenter, int yCenter, int radius, Color color) {
         super(xCenter, yCenter, radius);
         this.color = color;
+    }
+
+    public ColoredCircle(int xCenter, int yCenter, int radius, String color) {
+        super(xCenter, yCenter, radius);
+        try {
+            setColor(color);
+        } catch (ColorException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ColoredCircle(int radius, Color color) {
@@ -21,9 +40,27 @@ public class ColoredCircle extends Circle implements Colored {
         this.color = color;
     }
 
+    public ColoredCircle(int radius, String color) {
+        super(radius);
+        try {
+            setColor(color);
+        } catch (ColorException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public ColoredCircle(Color color) {
         super();
         this.color = color;
+    }
+
+    public ColoredCircle(String color) {
+        super();
+        try {
+            setColor(color);
+        } catch (ColorException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ColoredCircle() {
@@ -89,6 +126,7 @@ public class ColoredCircle extends Circle implements Colored {
         return result;
     }
 
+
     @Override
     public void setColor(Color color) {
         this.color = color;
@@ -97,5 +135,10 @@ public class ColoredCircle extends Circle implements Colored {
     @Override
     public Color getColor() {
         return color;
+    }
+
+    @Override
+    public void setColor(String colorString) throws ColorException {
+        this.color = Color.valueOf(colorString);
     }
 }
