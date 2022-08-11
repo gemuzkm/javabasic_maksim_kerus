@@ -7,7 +7,7 @@ import academy.tochkavhoda.iface.v3.Colored;
 public class ColoredCircle extends Circle implements Colored {
     private Color color;
 
-    public ColoredCircle(Point center, int radius, Color color) {
+    public ColoredCircle(Point center, int radius, Color color) throws ColorException {
         super(center, radius);
         this.color = color;
     }
