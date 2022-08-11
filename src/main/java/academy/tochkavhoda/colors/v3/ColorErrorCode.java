@@ -1,6 +1,6 @@
 package academy.tochkavhoda.colors.v3;
 
-public enum ColorErrorCode {
+public enum ColorErrorCode  {
     WRONG_COLOR_STRING,
     NULL_COLOR;
 

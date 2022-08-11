@@ -12,13 +12,9 @@ public class ColoredCircle extends Circle implements Colored {
         this.color = color;
     }
 
-    public ColoredCircle(Point center, int radius, String color) {
+    public ColoredCircle(Point center, int radius, String color) throws ColorException {
         super(center, radius);
-        try {
-            setColor(color);
-        } catch (ColorException e) {
-            throw new RuntimeException(e);
-        }
+        setColor(color);
     }
 
     public ColoredCircle(int xCenter, int yCenter, int radius, Color color) {
@@ -26,13 +22,9 @@ public class ColoredCircle extends Circle implements Colored {
         this.color = color;
     }
 
-    public ColoredCircle(int xCenter, int yCenter, int radius, String color) {
+    public ColoredCircle(int xCenter, int yCenter, int radius, String color) throws ColorException {
         super(xCenter, yCenter, radius);
-        try {
-            setColor(color);
-        } catch (ColorException e) {
-            throw new RuntimeException(e);
-        }
+        setColor(color);
     }
 
     public ColoredCircle(int radius, Color color) {
@@ -40,13 +32,10 @@ public class ColoredCircle extends Circle implements Colored {
         this.color = color;
     }
 
-    public ColoredCircle(int radius, String color) {
+    public ColoredCircle(int radius, String color) throws ColorException {
         super(radius);
-        try {
-            setColor(color);
-        } catch (ColorException e) {
-            throw new RuntimeException(e);
-        }
+        setColor(color);
+
     }
 
     public ColoredCircle(Color color) {
@@ -54,18 +43,14 @@ public class ColoredCircle extends Circle implements Colored {
         this.color = color;
     }
 
-    public ColoredCircle(String color) {
+    public ColoredCircle(String color) throws ColorException {
         super();
-        try {
             setColor(color);
-        } catch (ColorException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public ColoredCircle() {
         super();
-        this.color =Color.RED;
+        this.color = Color.RED;
     }
 
     public Point getCenter() {
