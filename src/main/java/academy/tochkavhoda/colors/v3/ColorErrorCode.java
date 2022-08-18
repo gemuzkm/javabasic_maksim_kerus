@@ -4,7 +4,7 @@ public enum ColorErrorCode  {
     WRONG_COLOR_STRING,
     NULL_COLOR;
 
-    String errorString;
+    private String errorString;
 
     ColorErrorCode(String errorString) {
         this.errorString = errorString;
